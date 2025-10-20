@@ -45,4 +45,3 @@ if __name__ == '__main__':
                 session.delete(vehicle)
 
         session.commit()
-
