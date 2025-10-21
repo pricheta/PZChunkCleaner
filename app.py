@@ -1,4 +1,6 @@
 from pathlib import Path
+from time import sleep
+from typing import Callable
 
 from commands import make_directory_backup, MAKE_BACKUP_COMMAND
 from db import get_session, Vehicle
@@ -14,6 +16,10 @@ MAKE_BACKUP_FEATURE_FLAG = True
 CLEAR_CHUNKS_FEATURE_FLAG = True
 CLEAR_CARS_FEATURE_FLAG = True
 
+MINUTES_TO_SLEEP = 30
+
+MINUTES_IN_HOUR = 60
+
 
 SAVE_CHUNK_AREA = ChunkArea.build_from_coordinates(
     1024,
@@ -22,8 +28,15 @@ SAVE_CHUNK_AREA = ChunkArea.build_from_coordinates(
     1503,
 )
 
+def repeat(func: Callable):
+    def wrapper(*args, **kwargs):
+        while True:
+            sleep(MINUTES_TO_SLEEP * MINUTES_IN_HOUR)
+            func(*args, **kwargs)
+    return wrapper
 
-if __name__ == '__main__':
+@repeat
+def start_app():
     if MAKE_BACKUP_FEATURE_FLAG:
         make_directory_backup(SAVE_DIRS_PATH / SAVE_DIR_NAME)
 
@@ -45,3 +58,6 @@ if __name__ == '__main__':
                 session.delete(vehicle)
 
         session.commit()
+
+if __name__ == "__main__":
+    start_app()
