@@ -34,7 +34,10 @@ def repeat(func: Callable):
             print(f'---------------------------------------')
             print(f'Sleeping for {MINUTES_TO_SLEEP} minutes')
             sleep(MINUTES_TO_SLEEP * MINUTES_IN_HOUR)
-            func(*args, **kwargs)
+            try:
+                func(*args, **kwargs)
+            except:
+                pass
     return wrapper
 
 @repeat
