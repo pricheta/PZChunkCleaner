@@ -31,6 +31,8 @@ SAVE_CHUNK_AREA = ChunkArea.build_from_coordinates(
 def repeat(func: Callable):
     def wrapper(*args, **kwargs):
         while True:
+            print(f'---------------------------------------')
+            print(f'Sleeping for {MINUTES_TO_SLEEP} minutes')
             sleep(MINUTES_TO_SLEEP * MINUTES_IN_HOUR)
             func(*args, **kwargs)
     return wrapper
