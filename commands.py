@@ -14,7 +14,7 @@ def make_directory_backup(directory: Path):
 
     now = datetime.now()
 
-    new_dir_name = f'{directory.name}_backup_{now.strftime("%H-%M %d-%m-%Y")}'
+    new_dir_name = f'{directory.name}_backup_{now.strftime("%Y-%m-%dT%H-%M-%S")}'
     command = MAKE_BACKUP_COMMAND.format(directory, parent/new_dir_name)
 
     run_command(command)
