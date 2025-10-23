@@ -32,8 +32,8 @@ class ChunkArea(BaseModel):
     def build_from_coordinates(
         cls,
         first_x_coordinate: int,
-        second_x_coordinate: int,
         first_y_coordinate: int,
+        second_x_coordinate: int,
         second_y_coordinate: int,
     ):
         start_x_coordinate = min(first_x_coordinate, second_x_coordinate)

@@ -16,10 +16,10 @@ CLEAR_CARS_FEATURE_FLAG = True
 
 
 SAVE_CHUNK_AREA = ChunkArea.build_from_coordinates(
-    1024,
-    1055,
-    1472,
-    1503,
+    first_x_coordinate=1034,
+    first_y_coordinate=1472,
+    second_x_coordinate=1045,
+    second_y_coordinate=1480,
 )
 
 
@@ -35,13 +35,15 @@ if __name__ == '__main__':
                 (SAVE_DIRS_PATH / SAVE_DIR_NAME / CHUNK_DATA_DIR / file).unlink()
 
     if CLEAR_CARS_FEATURE_FLAG:
-        session = get_session(SAVE_DIRS_PATH / SAVE_DIR_NAME / VEHICLES_DB_NAME)
-        vehicles = session.query(Vehicle).all()
+        try:
+            session = get_session(SAVE_DIRS_PATH / SAVE_DIR_NAME / VEHICLES_DB_NAME)
+            vehicles = session.query(Vehicle).all()
 
-        for vehicle in vehicles:
-            chunk = Chunk(x_coordinate=vehicle.wx, y_coordinate=vehicle.wy)
+            for vehicle in vehicles:
+                chunk = Chunk(x_coordinate=vehicle.wx, y_coordinate=vehicle.wy)
 
-            if chunk not in SAVE_CHUNK_AREA:
-                session.delete(vehicle)
-
-        session.commit()
+                if chunk not in SAVE_CHUNK_AREA:
+                    session.delete(vehicle)
+            session.commit()
+        except:
+            print('Возникла ошибка при очистке автомобилей')
