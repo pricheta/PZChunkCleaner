@@ -4,8 +4,6 @@ from commands import make_directory_backup, MAKE_BACKUP_COMMAND
 from db import get_session, Vehicle
 from models import ChunkArea, Chunk
 
-SAVE_DIRS_PATH = Path('C:/Users/pricheta/Zomboid/Saves/Sandbox')
-SAVE_DIR_NAME = 'v4'
 
 CHUNK_DATA_DIR = 'map'
 VEHICLES_DB_NAME = 'vehicles.db'
