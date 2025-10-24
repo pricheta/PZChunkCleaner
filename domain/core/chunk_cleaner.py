@@ -25,7 +25,7 @@ class ChunkCleaner:
 
     def clean(self):
         if self.config.MAKE_BACKUP_FEATURE_FLAG:
-            self.backuper.run(self.config.SAVE_FILE_DIR)
+            self.backuper.run()
 
         chunks = self.chunk_fetcher.fetch()
         save_zones = self.save_zone_builder.build()
