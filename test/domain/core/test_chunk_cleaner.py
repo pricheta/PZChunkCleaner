@@ -85,3 +85,9 @@ def test_clean_success(config, chunk_cleaner):
     chunk_cleaner.chunk_deleter.delete.assert_called_once_with(
         Chunk(x_coordinate=1, y_coordinate=4, created_at=NOW - timedelta(hours=1))
     )
+
+def test_clean_success_no_backup(config, chunk_cleaner):
+    config.MAKE_BACKUP_FEATURE_FLAG = False
+    chunk_cleaner.clean()
+
+    chunk_cleaner.backuper.run.assert_not_called()
