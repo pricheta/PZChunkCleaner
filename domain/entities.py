@@ -7,7 +7,7 @@ from pydantic import BaseModel, model_validator
 class Chunk(BaseModel):
     x_coordinate: int
     y_coordinate: int
-    created_at: datetime | None = None
+    created_at: datetime
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, Chunk):
