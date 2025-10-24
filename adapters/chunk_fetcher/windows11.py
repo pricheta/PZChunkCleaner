@@ -8,13 +8,15 @@ class Windows11ChunkFetcher(ChunkFetcher):
     def __init__(
         self,
         directory: Path,
+        save_files_dir_name: str = "map",
     ) -> None:
         self.directory = directory
+        self.save_files_dir_name = save_files_dir_name
 
     def fetch(self) -> list[Chunk]:
         chunks = []
 
-        for file in self.directory.iterdir():
+        for file in (self.directory / self.save_files_dir_name).iterdir():
             name = str(file.name).removesuffix(".bin")
             parts = name.split("_")
 
