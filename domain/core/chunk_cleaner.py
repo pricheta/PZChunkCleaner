@@ -33,6 +33,6 @@ class ChunkCleaner:
         for chunk in chunks:
             if any((chunk in save_zone for save_zone in save_zones)):
                 continue
-            if chunk.created_at <= threshold_datetime:
+            if threshold_datetime <= chunk.created_at:
                 continue
             self.chunk_deleter.delete(chunk)
