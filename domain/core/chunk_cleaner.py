@@ -28,7 +28,9 @@ class ChunkCleaner:
 
         chunks = self.chunk_fetcher.fetch()
         save_zones = self.save_zone_builder.build()
-        threshold_datetime = datetime.now() - timedelta(hours=self.config.MAX_CHUNK_AGE_HOURS)
+        threshold_datetime = datetime.now() - timedelta(
+            hours=self.config.MAX_CHUNK_AGE_HOURS
+        )
 
         for chunk in chunks:
             if any((chunk in save_zone for save_zone in save_zones)):

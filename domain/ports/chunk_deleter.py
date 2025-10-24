@@ -4,5 +4,4 @@ from domain.entities import Chunk
 
 
 class ChunkDeleter(Protocol):
-    def delete(self, chunk: Chunk) -> None:
-        ...
+    def delete(self, chunk: Chunk) -> None: ...

@@ -13,8 +13,8 @@ class Worker:
         func: Callable,
         immediate_run: bool,
         seconds_between_runs: int,
-        args = None,
-        kwargs = None,
+        args=None,
+        kwargs=None,
         repeats: int | float = math.inf,
     ) -> None:
         self.func = func
@@ -29,7 +29,7 @@ class Worker:
             sleep(self.seconds_between_runs)
 
         while self.repeats > 0:
-            print(f'Calling {self.func.__name__} at {get_now()}')
+            print(f"Calling {self.func.__name__} at {get_now()}")
             self.func(*self.args, **self.kwargs)
             sleep(self.seconds_between_runs)
             self.repeats -= 1

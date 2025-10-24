@@ -4,7 +4,7 @@ from pathlib import Path
 from sqlalchemy import Column, Integer, create_engine
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
 
-db_filename = 'vehicles.db'
+db_filename = "vehicles.db"
 
 
 class Vehicle(DeclarativeBase):
@@ -17,7 +17,7 @@ class Vehicle(DeclarativeBase):
 
 @lru_cache(maxsize=1)
 def get_vehicle_db_session(directory: Path):
-    engine_str = 'sqlite:///' + str(directory / db_filename)
+    engine_str = "sqlite:///" + str(directory / db_filename)
     engine = create_engine(engine_str, echo=True)
     Session = sessionmaker(bind=engine)
     return Session()

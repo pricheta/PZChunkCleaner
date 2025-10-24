@@ -38,7 +38,7 @@ def test_chunk_area_contains():
         assert chunk in chunk_area
 
     for chunk in [
-        'some_random_item',
+        "some_random_item",
         Chunk(x_coordinate=3, y_coordinate=1),
         Chunk(x_coordinate=1, y_coordinate=3),
     ]:

@@ -2,5 +2,4 @@ from typing import Protocol
 
 
 class Backuper(Protocol):
-    def run(self) -> None:
-        ...
+    def run(self) -> None: ...

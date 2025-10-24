@@ -4,5 +4,4 @@ from domain.entities import ChunkArea
 
 
 class SaveZoneBuilder(Protocol):
-    def build(self) -> list[ChunkArea]:
-        ...
+    def build(self) -> list[ChunkArea]: ...

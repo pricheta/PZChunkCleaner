@@ -4,5 +4,4 @@ from domain.entities import Chunk
 
 
 class ChunkFetcher(Protocol):
-    def fetch(self) -> list[Chunk]:
-        ...
+    def fetch(self) -> list[Chunk]: ...

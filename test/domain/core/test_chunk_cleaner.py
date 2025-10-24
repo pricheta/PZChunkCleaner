@@ -14,6 +14,7 @@ from domain.ports.save_zone_builder import SaveZoneBuilder
 
 NOW = datetime.now()
 
+
 @pytest.fixture()
 def config():
     return ChunkCleanerConfig()
@@ -38,16 +39,14 @@ def chunk_fetcher() -> ChunkFetcher:
 @pytest.fixture()
 def save_zone_builder() -> SaveZoneBuilder:
     save_zone_builder = Mock(spec=SaveZoneBuilder)
-    save_zone_builder.build.return_value = (
-        [
-            ChunkArea(
-                x_coordinate_start=1,
-                y_coordinate_start=1,
-                x_coordinate_end=1,
-                y_coordinate_end=2,
-            ),
-        ]
-    )
+    save_zone_builder.build.return_value = [
+        ChunkArea(
+            x_coordinate_start=1,
+            y_coordinate_start=1,
+            x_coordinate_end=1,
+            y_coordinate_end=2,
+        ),
+    ]
     return save_zone_builder
 
 
@@ -72,6 +71,7 @@ def chunk_cleaner(
         chunk_deleter=chunk_deleter,
     )
 
+
 def test_clean_success(config, chunk_cleaner):
     config.MAKE_BACKUP_FEATURE_FLAG = True
     config.MAX_CHUNK_AGE_HOURS = 1
@@ -85,6 +85,7 @@ def test_clean_success(config, chunk_cleaner):
     chunk_cleaner.chunk_deleter.delete.assert_called_once_with(
         Chunk(x_coordinate=1, y_coordinate=4, created_at=NOW - timedelta(hours=1))
     )
+
 
 def test_clean_success_no_backup(config, chunk_cleaner):
     config.MAKE_BACKUP_FEATURE_FLAG = False

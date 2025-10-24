@@ -13,7 +13,7 @@ class Windows11ChunkDeleter(ChunkDeleter):
         self,
         directory: Path,
         vehicle_db_session: Session,
-        filename_template: str = 'map_{}_{}.bin',
+        filename_template: str = "map_{}_{}.bin",
     ) -> None:
         self.directory = directory
         self.vehicle_db_session = vehicle_db_session
@@ -24,12 +24,6 @@ class Windows11ChunkDeleter(ChunkDeleter):
         (self.directory / filename).unlink()
 
         self.vehicle_db_session.query(Vehicle).filter(
-            and_(
-                Vehicle.wx == chunk.x_coordinate,
-                Vehicle.wy == chunk.y_coordinate
-            )
+            and_(Vehicle.wx == chunk.x_coordinate, Vehicle.wy == chunk.y_coordinate)
         ).delete(synchronize_session=False)
         self.vehicle_db_session.commit()
-
-
-
