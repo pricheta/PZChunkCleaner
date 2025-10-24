@@ -4,6 +4,7 @@ from pathlib import Path
 from sqlalchemy import Column, Integer, create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
+
 Base = declarative_base()
 
 
