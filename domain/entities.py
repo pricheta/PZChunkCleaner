@@ -12,7 +12,7 @@ class Chunk(BaseModel):
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, Chunk):
             return False
-        return self.x_coordinate == other.y_coordinate and self.y_coordinate == other.y_coordinate
+        return self.x_coordinate == other.x_coordinate and self.y_coordinate == other.y_coordinate
 
 
 class ChunkArea(BaseModel):
