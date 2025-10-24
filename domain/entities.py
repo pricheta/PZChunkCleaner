@@ -31,8 +31,9 @@ class ChunkArea(BaseModel):
         )
 
     @model_validator(mode='after')
-    def validate(self) -> None:
+    def validate_coordinates(self) -> Self:
         if self.x_coordinate_start > self.x_coordinate_end:
             raise ValueError('x start coordinate must be greater or equal to x end coordinate')
         if self.y_coordinate_start > self.y_coordinate_end:
             raise ValueError('y start coordinate must be greater or equal to y end coordinate')
+        return self

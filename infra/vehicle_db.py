@@ -2,14 +2,12 @@ from functools import lru_cache
 from pathlib import Path
 
 from sqlalchemy import Column, Integer, create_engine
-from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy.orm import sessionmaker, DeclarativeBase
 
-
-Base = declarative_base()
 db_filename = 'vehicles.db'
 
 
-class Vehicle(Base):
+class Vehicle(DeclarativeBase):
     __tablename__ = "vehicles"
 
     id = Column(Integer, primary_key=True)

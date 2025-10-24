@@ -3,9 +3,9 @@ from pathlib import Path
 from sqlalchemy import and_
 from sqlalchemy.orm import Session
 
-from db import Vehicle
 from domain.entities import Chunk
 from domain.ports.chunk_deleter import ChunkDeleter
+from infra.vehicle_db import Vehicle
 
 
 class Windows11ChunkDeleter(ChunkDeleter):
