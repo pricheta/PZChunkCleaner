@@ -11,17 +11,17 @@ class Worker:
     def __init__(
         self,
         func: Callable,
+        immediate_run: bool,
+        seconds_between_runs: int,
         args = None,
         kwargs = None,
-        immediate_run: bool = True,
-        seconds_between_runs: int = 60,
         repeats: int | float = math.inf,
     ) -> None:
         self.func = func
-        self.args = args or []
-        self.kwargs = kwargs or {}
         self.immediate_run = immediate_run
         self.seconds_between_runs = seconds_between_runs
+        self.args = args or []
+        self.kwargs = kwargs or {}
         self.repeats = repeats
 
     def run(self) -> None:
