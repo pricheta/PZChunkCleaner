@@ -11,14 +11,16 @@ class Windows11Backuper(Backuper):
         directory: Path,
         command_template:str = 'xcopy "{}" "{}" /s /e /i /y /q',
         new_dir_name_template: str = '{}_backup_{}',
+        datetime_format = "%Y-%m-%dT%H-%M-%S"
     ) -> None:
         self.directory = directory
         self.command_template = command_template
         self.new_dir_name_template = new_dir_name_template
+        self.datetime_format = datetime_format
 
     def run(self) -> None:
         now = datetime.now()
         parent = self.directory.parent
-        new_dir_name = self.new_dir_name_template.format(self.directory.name, now.strftime("%Y-%m-%dT%H-%M-%S"))
+        new_dir_name = self.new_dir_name_template.format(self.directory.name, now.strftime(self.datetime_format))
         command = self.command_template.format(self.directory, parent / new_dir_name)
         os.system(command)
