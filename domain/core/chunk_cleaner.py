@@ -38,6 +38,18 @@ class ChunkCleaner:
                 continue
             self.chunk_deleter.delete(chunk)
 
+
+
+
+
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
     if MAKE_BACKUP_FEATURE_FLAG:
         make_directory_backup(SAVE_DIRS_PATH / SAVE_DIR_NAME)
