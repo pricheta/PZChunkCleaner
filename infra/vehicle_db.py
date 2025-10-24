@@ -6,6 +6,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 
 
 Base = declarative_base()
+db_filename = 'vehicles.db'
 
 
 class Vehicle(Base):
@@ -17,8 +18,8 @@ class Vehicle(Base):
 
 
 @lru_cache(maxsize=1)
-def get_vehicle_db_session(db_path: Path):
-    engine_str = 'sqlite:///' + str(db_path)
+def get_vehicle_db_session(directory: Path):
+    engine_str = 'sqlite:///' + str(directory / db_filename)
     engine = create_engine(engine_str, echo=True)
     Session = sessionmaker(bind=engine)
     return Session()
