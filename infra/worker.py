@@ -28,8 +28,12 @@ class Worker:
         if not self.immediate_run:
             sleep(self.seconds_between_runs)
 
-        while self.repeats > 0:
+        while True:
             print(f"Calling {self.func.__name__} at {get_now()}")
             self.func(*self.args, **self.kwargs)
-            sleep(self.seconds_between_runs)
+
             self.repeats -= 1
+            if self.repeats <= 0:
+                break
+
+            sleep(self.seconds_between_runs)

@@ -22,6 +22,6 @@ class Vehicle(Base):
 @lru_cache(maxsize=1)
 def get_vehicle_db_session(directory: Path):
     engine_str = "sqlite:///" + str(directory / db_filename)
-    engine = create_engine(engine_str, echo=True)
+    engine = create_engine(engine_str, echo=False)
     Session = sessionmaker(bind=engine)
     return Session()
