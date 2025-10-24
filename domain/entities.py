@@ -17,8 +17,8 @@ class Chunk(BaseModel):
 
 class ChunkArea(BaseModel):
     x_coordinate_start: int
-    x_coordinate_end: int
     y_coordinate_start: int
+    x_coordinate_end: int
     y_coordinate_end: int
 
     def __contains__(self, chunk: Any) -> bool:
