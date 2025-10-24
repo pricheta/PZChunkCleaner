@@ -44,6 +44,7 @@ def test_chunk_area_contains():
     ]:
         assert not chunk in chunk_area
 
+
 def test_chunk_area_validate():
     ChunkArea(
         x_coordinate_start=1,
