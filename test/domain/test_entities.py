@@ -9,20 +9,20 @@ NOW = datetime.now()
 
 
 def test_chunk_eq():
-    first_chunk = Chunk(x_coordinate=1, y_coordinate=1, created_at=NOW)
-    second_chunk = Chunk(x_coordinate=1, y_coordinate=1, created_at=NOW)
+    first_chunk = Chunk(x_coordinate=1, y_coordinate=1, last_time_used_at=NOW)
+    second_chunk = Chunk(x_coordinate=1, y_coordinate=1, last_time_used_at=NOW)
     assert first_chunk == second_chunk
 
-    first_chunk = Chunk(x_coordinate=1, y_coordinate=1, created_at=NOW)
-    second_chunk = Chunk(x_coordinate=1, y_coordinate=2, created_at=NOW)
+    first_chunk = Chunk(x_coordinate=1, y_coordinate=1, last_time_used_at=NOW)
+    second_chunk = Chunk(x_coordinate=1, y_coordinate=2, last_time_used_at=NOW)
     assert first_chunk != second_chunk
 
-    first_chunk = Chunk(x_coordinate=1, y_coordinate=1, created_at=NOW)
-    second_chunk = Chunk(x_coordinate=2, y_coordinate=1, created_at=NOW)
+    first_chunk = Chunk(x_coordinate=1, y_coordinate=1, last_time_used_at=NOW)
+    second_chunk = Chunk(x_coordinate=2, y_coordinate=1, last_time_used_at=NOW)
     assert first_chunk != second_chunk
 
-    first_chunk = Chunk(x_coordinate=1, y_coordinate=1, created_at=NOW)
-    second_chunk = Chunk(x_coordinate=2, y_coordinate=2, created_at=NOW)
+    first_chunk = Chunk(x_coordinate=1, y_coordinate=1, last_time_used_at=NOW)
+    second_chunk = Chunk(x_coordinate=2, y_coordinate=2, last_time_used_at=NOW)
     assert first_chunk != second_chunk
 
 
@@ -35,17 +35,17 @@ def test_chunk_area_contains():
     )
 
     for chunk in [
-        Chunk(x_coordinate=1, y_coordinate=1, created_at=NOW),
-        Chunk(x_coordinate=1, y_coordinate=2, created_at=NOW),
-        Chunk(x_coordinate=2, y_coordinate=1, created_at=NOW),
-        Chunk(x_coordinate=2, y_coordinate=2, created_at=NOW),
+        Chunk(x_coordinate=1, y_coordinate=1, last_time_used_at=NOW),
+        Chunk(x_coordinate=1, y_coordinate=2, last_time_used_at=NOW),
+        Chunk(x_coordinate=2, y_coordinate=1, last_time_used_at=NOW),
+        Chunk(x_coordinate=2, y_coordinate=2, last_time_used_at=NOW),
     ]:
         assert chunk in chunk_area
 
     for chunk in [
         "some_random_item",
-        Chunk(x_coordinate=3, y_coordinate=1, created_at=NOW),
-        Chunk(x_coordinate=1, y_coordinate=3, created_at=NOW),
+        Chunk(x_coordinate=3, y_coordinate=1, last_time_used_at=NOW),
+        Chunk(x_coordinate=1, y_coordinate=3, last_time_used_at=NOW),
     ]:
         assert not chunk in chunk_area
 

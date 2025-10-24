@@ -29,9 +29,11 @@ def backuper() -> Backuper:
 def chunk_fetcher() -> ChunkFetcher:
     chunk_fetcher = Mock(spec=ChunkFetcher)
     chunk_fetcher.fetch.return_value = [
-        Chunk(x_coordinate=1, y_coordinate=1, created_at=NOW),
-        Chunk(x_coordinate=1, y_coordinate=3, created_at=NOW),
-        Chunk(x_coordinate=1, y_coordinate=4, created_at=NOW - timedelta(hours=1)),
+        Chunk(x_coordinate=1, y_coordinate=1, last_time_used_at=NOW),
+        Chunk(x_coordinate=1, y_coordinate=3, last_time_used_at=NOW),
+        Chunk(
+            x_coordinate=1, y_coordinate=4, last_time_used_at=NOW - timedelta(hours=1)
+        ),
     ]
     return chunk_fetcher
 
@@ -83,7 +85,9 @@ def test_clean_success(config, chunk_cleaner):
     chunk_cleaner.save_zone_builder.build.assert_called_once()
 
     chunk_cleaner.chunk_deleter.delete.assert_called_once_with(
-        Chunk(x_coordinate=1, y_coordinate=4, created_at=NOW - timedelta(hours=1))
+        Chunk(
+            x_coordinate=1, y_coordinate=4, last_time_used_at=NOW - timedelta(hours=1)
+        )
     )
 
 
