@@ -1,3 +1,4 @@
+from datetime import datetime
 from pathlib import Path
 
 from domain.entities import Chunk
@@ -23,6 +24,9 @@ class Windows11ChunkFetcher(ChunkFetcher):
             x = int(parts[1])
             y = int(parts[2])
 
-            chunks.append(Chunk(x_coordinate=x, y_coordinate=y))
+            stat = file.stat()
+            last_used = datetime.fromtimestamp(stat.st_atime or stat.st_mtime)
+
+            chunks.append(Chunk(x_coordinate=x, y_coordinate=y, created_at=last_used))
 
         return chunks
