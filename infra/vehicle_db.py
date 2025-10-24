@@ -7,7 +7,11 @@ from sqlalchemy.orm import sessionmaker, DeclarativeBase
 db_filename = "vehicles.db"
 
 
-class Vehicle(DeclarativeBase):
+class Base(DeclarativeBase):
+    pass
+
+
+class Vehicle(Base):
     __tablename__ = "vehicles"
 
     id = Column(Integer, primary_key=True)
