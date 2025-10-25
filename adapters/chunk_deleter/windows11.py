@@ -31,4 +31,4 @@ class Windows11ChunkDeleter(ChunkDeleter):
             ).delete(synchronize_session=False)
             self.vehicle_db_session.commit()
         except:  # pragma: no cover
-            print("Error during deleting vehicles. Probably, you are running this save right now?")
+            ...
