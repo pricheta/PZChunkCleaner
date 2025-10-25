@@ -1,4 +1,3 @@
-# pragma: no cover
 from adapters.backuper.windows11 import Windows11Backuper
 from adapters.chunk_deleter.windows11 import Windows11ChunkDeleter
 from adapters.chunk_fetcher.windows11 import Windows11ChunkFetcher
