@@ -9,4 +9,4 @@ class ChunkCleanerConfig(BaseSettings):
     SAVE_FILE_DIR: Path = Path("C:/Users/pricheta/Zomboid/Saves/Sandbox/test")
     IMMEDIATE_RUN: bool = True
     SECONDS_BETWEEN_RUNS: int = 60
-    REPEATS: int = 1
+    REPEATS: int | None = None

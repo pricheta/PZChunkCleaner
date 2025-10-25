@@ -15,14 +15,14 @@ class Worker:
         seconds_between_runs: int,
         args=None,
         kwargs=None,
-        repeats: int | float = math.inf,
+        repeats: int | None = None,
     ) -> None:
         self.func = func
         self.immediate_run = immediate_run
         self.seconds_between_runs = seconds_between_runs
         self.args = args or []
         self.kwargs = kwargs or {}
-        self.repeats = repeats
+        self.repeats: int | float = repeats or math.inf
 
     def run(self) -> None:
         if not self.immediate_run:
