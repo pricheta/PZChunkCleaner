@@ -36,4 +36,5 @@ class Worker:
             if self.repeats <= 0:
                 break
 
+            print(f'Sleeping for {self.seconds_between_runs} seconds')
             sleep(self.seconds_between_runs)
