@@ -20,9 +20,7 @@ def typecheck():
 
 def test():
     try:
-        run(
-            "pytest --cov=. --cov-report=term-missing:skip-covered --cov-fail-under=100"
-        )
+        run("pytest --cov=. --cov-report=term-missing:skip-covered --cov-fail-under=100")
     except:
         ...
 

@@ -27,9 +27,7 @@ def test_run_creates_correct_backup_command(mock_datetime, mock_os_system, tmp_d
     backuper.run()
 
     expected_new_dir_name = f"data_backup_{NOW.strftime(backuper.datetime_format)}"
-    expected_command = backuper.command_template.format(
-        tmp_dir, tmp_dir.parent / expected_new_dir_name
-    )
+    expected_command = backuper.command_template.format(tmp_dir, tmp_dir.parent / expected_new_dir_name)
 
     mock_os_system.assert_called_once_with(expected_command)
 
@@ -49,8 +47,6 @@ def test_run_uses_custom_templates(mock_datetime, mock_os_system, tmp_dir):
     backuper.run()
 
     expected_new_dir_name = f"data_ARCHIVE_{NOW.strftime(backuper.datetime_format)}"
-    expected_command = (
-        f'echo COPY "{tmp_dir}" "{tmp_dir.parent / expected_new_dir_name}"'
-    )
+    expected_command = f'echo COPY "{tmp_dir}" "{tmp_dir.parent / expected_new_dir_name}"'
 
     mock_os_system.assert_called_once_with(expected_command)

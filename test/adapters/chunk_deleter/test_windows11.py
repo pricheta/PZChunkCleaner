@@ -45,9 +45,7 @@ def test_delete_removes_file_and_db_record(deleter, tmp_dir, mock_session):
 
     mock_session.query.assert_called_once()
     mock_session.query.return_value.filter.assert_called_once()
-    mock_session.query.return_value.filter.return_value.delete.assert_called_once_with(
-        synchronize_session=False
-    )
+    mock_session.query.return_value.filter.return_value.delete.assert_called_once_with(synchronize_session=False)
     mock_session.commit.assert_called_once()
 
 

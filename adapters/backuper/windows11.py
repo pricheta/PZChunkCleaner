@@ -20,10 +20,6 @@ class Windows11Backuper(Backuper):
 
     def run(self) -> None:
         now = datetime.now()
-        new_dir_name = self.new_dir_name_template.format(
-            self.directory.name, now.strftime(self.datetime_format)
-        )
-        command = self.command_template.format(
-            self.directory, self.directory.parent / new_dir_name
-        )
+        new_dir_name = self.new_dir_name_template.format(self.directory.name, now.strftime(self.datetime_format))
+        command = self.command_template.format(self.directory, self.directory.parent / new_dir_name)
         os.system(command)

@@ -27,8 +27,6 @@ class Windows11ChunkFetcher(ChunkFetcher):
             stat = file.stat()
             last_used = datetime.fromtimestamp(stat.st_atime or stat.st_mtime)
 
-            chunks.append(
-                Chunk(x_coordinate=x, y_coordinate=y, last_time_used_at=last_used)
-            )
+            chunks.append(Chunk(x_coordinate=x, y_coordinate=y, last_time_used_at=last_used))
 
         return chunks

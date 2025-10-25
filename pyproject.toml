@@ -15,5 +15,5 @@ skip_covered = true
 fail_under = 100
 
 [tool.black]
-line-length = 88
+line-length = 120
 target-version = ["py311"]
