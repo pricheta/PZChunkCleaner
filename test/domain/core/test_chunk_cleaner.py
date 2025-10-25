@@ -74,7 +74,7 @@ def chunk_cleaner(
 
 def test_clean_success(config, chunk_cleaner):
     config.MAKE_BACKUP_FEATURE_FLAG = True
-    config.MAX_CHUNK_AGE_HOURS = 1
+    config.MAX_CHUNK_AGE_MINUTES = 1
 
     chunk_cleaner.clean()
 
