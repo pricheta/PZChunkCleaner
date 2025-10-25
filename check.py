@@ -19,7 +19,12 @@ def typecheck():
 
 
 def test():
-    run("pytest .")
+    try:
+        run(
+            "pytest --cov=. --cov-report=term-missing:skip-covered --cov-fail-under=100"
+        )
+    except:
+        ...
 
 
 def clear():

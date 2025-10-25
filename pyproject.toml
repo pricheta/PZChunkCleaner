@@ -1,0 +1,19 @@
+[tool.coverage.run]
+branch = true
+source = ["adapters", "domain"]
+omit = [
+    "*/__init__.py",
+    "*/app.py",
+    "*/check.py",
+    "*/tests/*",
+    "*/infra/*"
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+fail_under = 100
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]

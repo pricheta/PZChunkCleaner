@@ -25,6 +25,10 @@ def test_chunk_eq():
     second_chunk = Chunk(x_coordinate=2, y_coordinate=2, last_time_used_at=NOW)
     assert first_chunk != second_chunk
 
+    first_chunk = "some_random_item"
+    second_chunk = Chunk(x_coordinate=2, y_coordinate=2, last_time_used_at=NOW)
+    assert first_chunk != second_chunk
+
 
 def test_chunk_area_contains():
     chunk_area = ChunkArea(
