@@ -4,10 +4,10 @@ from domain.ports.save_zone_builder import SaveZoneBuilder
 
 SAVE_ZONES = [
     ChunkArea(
-        x_coordinate_start=1041,
-        y_coordinate_start=1475,
-        x_coordinate_end=1041,
-        y_coordinate_end=1475,
+        x_coordinate_start=1506,
+        y_coordinate_start=890,
+        x_coordinate_end=1512,
+        y_coordinate_end=896,
     ),
 ]
 
