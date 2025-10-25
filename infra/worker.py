@@ -29,7 +29,7 @@ class Worker:
             sleep(self.seconds_between_runs)
 
         while True:
-            print(f"Calling {self.func.__name__} at {get_now()}")
+            print(f"Calling {self.func.__module__}.{self.func.__qualname__} at {get_now()}")
             self.func(*self.args, **self.kwargs)
 
             self.repeats -= 1
