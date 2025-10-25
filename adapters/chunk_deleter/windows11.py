@@ -25,10 +25,7 @@ class Windows11ChunkDeleter(ChunkDeleter):
         filename = self.filename_template.format(chunk.x_coordinate, chunk.y_coordinate)
         (self.directory / self.save_files_dir_name / filename).unlink()
 
-        try:
-            self.vehicle_db_session.query(Vehicle).filter(
-                and_(Vehicle.wx == chunk.x_coordinate, Vehicle.wy == chunk.y_coordinate)
-            ).delete(synchronize_session=False)
-            self.vehicle_db_session.commit()
-        except:  # pragma: no cover
-            ...
+        self.vehicle_db_session.query(Vehicle).filter(
+            and_(Vehicle.wx == chunk.x_coordinate, Vehicle.wy == chunk.y_coordinate)
+        ).delete(synchronize_session=False)
+        self.vehicle_db_session.commit()
