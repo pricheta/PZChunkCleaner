@@ -1,7 +1,7 @@
 from adapters.backuper.windows11 import Windows11Backuper
 from adapters.chunk_deleter.windows11 import Windows11ChunkDeleter
 from adapters.chunk_fetcher.windows11 import Windows11ChunkFetcher
-from adapters.save_zone_builder.windows11 import Windows11SaveZoneBuilder
+from adapters.save_zone_builder.dummy import DummySaveZoneBuilder
 from domain.core.chunk_cleaner import ChunkCleaner
 from domain.core.config import ChunkCleanerConfig
 from infra.vehicle_db import get_vehicle_db_session
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     chunk_fetcher = Windows11ChunkFetcher(
         directory=chunk_cleaner_config.SAVE_FILE_DIR,
     )
-    save_zone_builder = Windows11SaveZoneBuilder()
+    save_zone_builder = DummySaveZoneBuilder()
     chunk_deleter = Windows11ChunkDeleter(
         directory=chunk_cleaner_config.SAVE_FILE_DIR,
         vehicle_db_session=vehicle_db_session,

@@ -12,6 +12,6 @@ SAVE_ZONES = [
 ]
 
 
-class Windows11SaveZoneBuilder(SaveZoneBuilder):
+class DummySaveZoneBuilder(SaveZoneBuilder):
     def build(self) -> list[ChunkArea]:
         return SAVE_ZONES
